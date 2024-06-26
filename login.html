@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/classes.js" defer></script>
+  <script src="js/script.js" defer></script>
+  <title>LitLink Store</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      overflow: hidden;
+    }
+
+    main {
+      position: relative;
+      height: 100vh;
+    }
+
+    #background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/book-image.jpg') center/cover no-repeat;
+      z-index: -1;
+    }
+
+    #login-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #register-section, #forgotten-password-section {
+      display: none;
+    }
+
+    #toggle-login, #toggle-register, #toggle-forgotten-password {
+      color: #555;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    #toggle-login:hover, #toggle-register:hover, #toggle-forgotten-password:hover {
+      color: #333;
+    }
+
+      /* Footer Styles */
+      footer {
+      background-color: #F7E8D3;
+      padding: 25px;
+    }
+  </style>
+ <style>
+  #login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 15px 15px 0 0; /* Adjust border-radius for a trapezoidal shape */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%); /* Use clip-path for a trapezoidal shape */
+    width: 300px;
+    text-align: center;
+  }
+</style>
+<script>
+  function toggleForm(formType) {
+    const loginSection = document.getElementById('login-section');
+    const registerSection = document.getElementById('register-section');
+    const forgottenPasswordSection = document.getElementById('forgotten-password-section');
+
+    if (formType === 'register') {
+      loginSection.style.display = 'none';
+      registerSection.style.display = 'block';
+      forgottenPasswordSection.style.display = 'none';
+    } else if (formType === 'forgotten-password') {
+      loginSection.style.display = 'none';
+      registerSection.style.display = 'none';
+      forgottenPasswordSection.style.display = 'block';
+    } else {
+      loginSection.style.display = 'block';
+      registerSection.style.display = 'none';
+      forgottenPasswordSection.style.display = 'none';
+    }
+  }
+
+  function validateLogin(event) {
+  event.preventDefault();
+
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value.trim();
+
+  // For demonstration purposes, check if the entered username and password match predefined values
+  if (username.toLowerCase() === 'marwa' && password === 'Marwa.ah') {
+      // Redirect to the search.html page (replace with your actual page URL)
+      window.location.href = 'search.html';
+  } else {
+      alert('Invalid credentials. Please try again.');
+  }
+}
+
+
+  function validateRegistration(event) {
+    event.preventDefault();
+
+    // Replace this with your actual registration logic
+    const newUsername = document.getElementById('new-username').value;
+    const newPassword = document.getElementById('new-password').value;
+
+    // For demonstration purposes, let's check if the new username and password are not empty
+    if (newUsername && newPassword) {
+      alert('Registration successful!'); // You might want to redirect to login or another page
+      // For now, let's switch to the login form after successful registration
+      toggleForm('login');
+    } else {
+      alert('Invalid registration credentials. Please enter both new username and password.');
+    }
+  }
+
+  function handleForgottenPassword(event) {
+    event.preventDefault();
+    // Add logic to handle forgotten password submission
+    alert('Password reset link sent to your email.');
+  }
+</script>
+</head>
+<body>
+  <main>
+    <div id="background-image"></div>
+    <div id="login-container">
+      <div id="login-section">
+        <h1>LitLink Store</h1>
+        <form id="login-form" onsubmit="validateLogin(event)">
+            <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+
+          <button type="submit">Login</button>
+        </form>
+        <p id="toggle-register" onclick="toggleForm('register')">Don't have an account? Register here.</p>
+        <p id="toggle-forgotten-password" onclick="toggleForm('forgotten-password')">Forgotten Password?</p>
+      </div>
+
+      <div id="register-section">
+        <h2>Register</h2>
+        <form id="register-form" onsubmit="validateRegistration(event)">
+          <label for="new-username">New Username:</label>
+          <input type="text" id="new-username" name="new-username" required>
+
+          <label for="new-password">New Password:</label>
+          <input type="password" id="new-password" name="new-password" required>
+
+          <button type="submit">Register</button>
+        </form>
+        <p id="toggle-login" onclick="toggleForm('login')">Already have an account? Login here.</p>
+      </div>
+
+      <div id="forgotten-password-section">
+        <h2>Forgotten Password</h2>
+        <form id="forgotten-password-form" onsubmit="handleForgottenPassword(event)">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <button type="submit">Reset Password</button>
+        </form>
+        <p id="toggle-login" onclick="toggleForm('login')">Remembered your password? Login here.</p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

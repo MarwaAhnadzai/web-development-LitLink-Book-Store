@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>LitLink Store</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="icon" href="path/to/favicon.ico" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+    .jumbotron {
+      margin-bottom: 0;
+      background: url('images/logo.jpg') center center;
+      background-size: cover;
+      color: rgb(0, 0, 0);
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #222;
+    }
+
+    .panel-body {
+      height: 400px;
+    }
+
+    .panel-body img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .panel-footer {
+      color: #000000;
+    }
+
+    .custom-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .custom-pagination a {
+      color: #333;
+      font-size: 18px;
+      margin: 0 5px;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .custom-pagination a:hover {
+      background-color: #ffffff;
+    }
+
+    .custom-pagination .active {
+      background-color: #3498db;
+      color: #000000;
+    }
+
+    .navbar-nav>li>a {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .navbar-nav>li>a:hover {
+      color: #3498db;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1></h1>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <li class="dropdown">
+          <a class="navbar-brand" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Marwa.Ah</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">991647132</a></li>
+            <li><a href="login.html">Logout</a></li>
+          </ul>
+        </li>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="#">Books</a></li>
+          <li><a href="#">Deals</a></li>
+          <li><a href="#">Authors</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="search.html"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+          <li><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <form action="search.html" method="GET" class="input-group" style="max-width: 600px; margin: 0 auto;">
+          <input type="text" name="query" class="form-control" placeholder="Search for books..."
+            style="border-radius: 15px 0 0 15px;">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-info" style="border-radius: 0 10px 10px 0;">Search</button>
+          </span>
+        </form>
+      </div>
+    </div>
+  
+    
+  <div class="container"> <br><br>
+    <div class="row">
+      <div class="col-sm-4">
+          <a href="detail.html">
+        <div class="panel panel-primary">
+          <div class="panel-heading">FEATURED BOOK</div>
+          <div class="panel-body"><img src="images/book1.jpg" class="img-responsive" style="width:100%" alt="Book Cover"></div>
+          <div class="panel-footer">The Adventure Begins - John Writer</div>
+        </div>
+      </div>
+      <div class="col-sm-4"> 
+          <a href="detail.html">
+        <div class="panel panel-danger">
+          <div class="panel-heading">FEATURED BOOK</div>
+          <div class="panel-body"><img src="images/book2.jpg" class="img-responsive" style="width:100%" alt="Book Cover"></div>
+          <div class="panel-footer">Secrets of the Cosmos - Astrid Explorer</div>
+        </div>
+      </div>
+      <div class="col-sm-4"> 
+          <a href="detail.html">
+        <div class="panel panel-success">
+          <div class="panel-heading">FEATURED BOOK</div>
+          <div class="panel-body"><img src="images/book3.jpg" class="img-responsive" style="width:100%" alt="Book Cover"></div>
+          <div class="panel-footer">The Hidden World - Olivia Adventurer</div>
+        </div>
+      </div>
+    </div>
+  </div><br>
+  
+  <div class="container">    
+    <div class="row">
+      <div class="col-sm-4">
+          <a href="detail.html">
+        <div class="panel panel-primary">
+          <div class="panel-heading">NEW RELEASE</div>
+          <div class="panel-body"><img src="images/book4.jpg" class="img-responsive" style="width:100%" alt="Book Cover"></div>
+          <div class="panel-footer">Beyond the Horizon - Victor Voyager</div>
+        </div>
+      </div>
+      <div class="col-sm-4"> 
+          <a href="detail.html">
+        <div class="panel panel-primary">
+          <div class="panel-heading">NEW RELEASE</div>
+          <div class="panel-body"><img src="images/book5.jpg" class="img-responsive" style="width:100%" alt="Book Cover"></div>
+          <div class="panel-footer">Enigma of Time - Zoe Timekeeper</div>
+        </div>
+      </div>
+      <div class="col-sm-4"> 
+          <a href="detail.html">
+        <div class="panel panel-primary">
+          <div class="panel-heading">NEW RELEASE</div>
+          <div class="panel-body"><img src="images/book6.jpg" class="img-responsive" style="width:100%" alt="Book Cover"></div>
+          <div class="panel-footer">Echoes of Eternity - Sophia Echo</div>
+        </div>
+      </div>
+      <!-- Additional Books -->
+  <div class="container">    
+      <div class="row">
+        <!-- Book 7 -->
+        <div class="col-sm-4">
+          <a href="detail.html">
+          <div class="panel panel-primary">
+            <div class="panel-heading">ADDITIONAL BOOK</div>
+            <div class="panel-body"><img src="images/book7.jpg" class="img-responsive" style="width:100%" alt="Book Cover"></div>
+            <div class="panel-footer">The Quantum Quest - Max Quantum</div>
+          </div>
+        </div>
+        
+        <!-- Book 8 -->
+        <div class="col-sm-4">
+          <a href="detail.html">
+          <div class="panel panel-danger">
+            <div class="panel-heading">ADDITIONAL BOOK</div>
+            <div class="panel-body"><img src="images/book8.jpg" class="img-responsive" style="width:100%" alt="Book Cover"></div>
+            <div class="panel-footer">Lost in the Nebula - Elena Nebula</div>
+          </div>
+        </div>
+        
+        <!-- Book 9 -->
+        <div class="col-sm-4"> 
+          <a href="detail.html">
+          <div class="panel panel-success">
+            <div class="panel-heading">ADDITIONAL BOOK</div>
+            <div class="panel-body"><img src="images/book9.jpg" class="img-responsive" style="width:100%" alt="Book Cover"></div>
+            <div class="panel-footer">Whispers of the Galaxy - Liam Stargazer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+      <!-- Custom Pagination -->
+      <div class="col-sm-12 text-center custom-pagination">
+        <a href="#" aria-label="Previous">&laquo; Prev</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">7</a>
+        <!-- Add more links as needed -->
+        <a href="#">Next &raquo;</a>
+      </div>
+    </div>
+  </div>
+  <br> <br>
+
+
+   
+  
+  <footer class="container-fluid text-center">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 20%;">
+        <h4>Popular Categories</h4>
+        <ul>
+          <li><a href="#">Children's</a></li>
+          <li><a href="#">Teen and Young Adult</a></li>
+          <li><a href="#">Literature & Fiction</a></li>
+          <li><a href="#">Mystery & Thriller</a></li>
+          <li><a href="#">Sci-fi & Fantasy</a></li>
+          <li><a href="#">Rare & Collectible Books</a></li>
+        </ul>
+      </div>
+      <div style="width: 20%;">
+        <h4>Website</h4>
+        <ul>
+          <li><a href="#">Educator Benefits</a></li>
+          <li><a href="#">Librarian Benefits</a></li>
+          <li><a href="#">e-Gift Cards</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">View Mobile Site</a></li
+
+>
+        </ul>
+      </div>
+      <div style="width: 20%;">
+        <h4>My Account</h4>
+        <ul>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Shopping Cart</a></li>
+          <li><a href="#">Order History</a></li>
+          <li><a href="#">Wish List</a></li>
+        </ul>
+      </div>
+      <div style="width: 20%;">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="https://www.facebook.com" target="_blank"><img src="images/facebook-logo.png" alt="Facebook Logo"
+                class="social-logo">Facebook</a></li>
+          <li><a href="https://www.twitter.com" target="_blank"><img src="images/twitter-logo.png" alt="Twitter Logo"
+                class="social-logo">Twitter</a></li>
+          <li><a href="https://www.pinterest.com" target="_blank"><img src="images/pinterest-logo.png"
+                alt="Pinterest Logo" class="social-logo">Pinterest</a></li>
+          <li><a href="https://www.tumblr.com" target="_blank"><img src="images/tumblr-logo.png" alt="Tumblr Logo"
+                class="social-logo">Tumblr</a></li>
+          <li><a href="https://www.instagram.com" target="_blank"><img src="images/instagram-logo.png"
+                alt="Instagram Logo" class="social-logo">Instagram</a></li>
+        </ul>
+      </div>
+      <div style="width: 20%;">
+        <h4>Help & Support</h4>
+        <ul>
+          <li><a href="#">Shipping Costs</a></li>
+          <li><a href="#">Billing</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Website Suggestions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="width: 100%; text-align: center; margin-top: 30px;">
+      <p>LitLink Book Store &copy; 2023</p>
+      <form class="form-inline">
+        Get deals:
+        <input type="email" class="form-control" size="50" placeholder="Email Address">
+        <button type="button" class="btn btn-danger">Sign Up</button>
+      </form>
+    </div>
+  </footer>
+  <style>
+    /* Add your existing CSS styles here */
+
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 25px;
+      width: 100%;
+    }
+
+    footer h4 {
+      color: #ff8c00;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input {
+      padding: 5px;
+      margin-right: 10px;
+    }
+
+    .social-logo {
+      width: 20px;
+      height: auto;
+      margin-right: 5px;
+    }
+  </style>
+
+</body>
+
+</html>

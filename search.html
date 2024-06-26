@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>LitLink Store</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="icon" href="path/to/favicon.ico" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f8f8f8;
+    }
+    .jumbotron {
+      margin-bottom: 0;
+      background: url('images/logo.jpg') center center;
+      background-size: cover;
+      color: rgb(0, 0, 0);
+      text-shadow: 2px 2px 4px #000;
+    }
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    .profile-details {
+    margin-top: 20px; /* Add some space between the icon and details */
+}
+
+  .profile-details p {
+  margin-bottom: 10px; /* Add space between each detail line */
+}
+
+    .profile-section {
+      background-color: #ffffff52;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      height: 93vh;
+
+
+    }
+    .profile-actions {
+      margin-top: 10px;
+    }   
+    .profile-icon {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px;
+}
+.profile-details a {
+  color: #000000; /* or any other color you prefer */
+}
+
+.profile-actions a {
+  color: #ffffff; /* or any other color for the buttons */
+  text-decoration: none; /* remove underlines from the buttons, adjust as needed */
+}
+
+.profile-actions a:hover {
+  color: #ffffff; /* change color on hover for better visibility */
+  text-decoration: none; /* adjust as needed */
+}
+/* Add this CSS to your existing styles or in a separate stylesheet */
+
+#order-options a,
+#payment-options a {
+  color: #000000; /* or any other color you prefer */
+  text-decoration: none; /* remove underlines from the options, adjust as needed */
+}
+
+
+    .rounded-circle {
+    border-radius: 30%; /* This makes the image circular */
+}
+    .book-section {
+      background-color: #ffffff52;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-panel {
+      margin-bottom: 20px;
+    }
+    .price {
+  color: #3498db; /* or any other color */
+  font-weight: bold;
+  text-align: center;
+  margin-top: 8px;
+}
+.panel-footer {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 8px;
+}
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      padding: 25px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    footer h4 {
+      color: #ff8c00;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input {
+      padding: 5px;
+      margin-right: 10px;
+    }
+
+    .social-logo {
+      width: 20px;
+      height: auto;
+      margin-right: 5px;
+
+    }
+    .panel-body img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    .panel-body {
+      height: 400px;
+    }
+    .arrow {
+  display: inline-block;
+  margin-left: 5px; /* Adjust the spacing between the text and the arrow */
+}
+  </style>
+  <!-- JavaScript to toggle visibility of options -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Get the links and options elements
+  
+      const orderAndPaymentLink = document.getElementById("order-link");
+  
+      // Function to toggle visibility of options
+      function toggleOptions(link, options) {
+        link.addEventListener("click", function(event) {
+          event.preventDefault();
+          options.style.display = options.style.display === "block" ? "none" : "block";
+        });
+      }
+  
+      // Toggle visibility for each link
+      toggleOptions(orderAndPaymentLink, document.getElementById("order-options"));
+    });
+  </script>
+  
+<!-- Add this script at the end of your HTML body -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Function to format the date as "YYYY-MM-DD"
+    function formatDate(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    // Get the current date and set it to the "current-date" span
+    const currentDateElement = document.getElementById("current-date");
+    if (currentDateElement) {
+      const currentDate = new Date();
+      currentDateElement.textContent = formatDate(currentDate);
+    }
+  });
+  // Add this script at the end of your existing JavaScript
+document.addEventListener("DOMContentLoaded", function() {
+  // Function to format the time as "HH:mm:ss"
+  function formatTime(time) {
+    const hours = String(time.getHours()).padStart(2, "0");
+    const minutes = String(time.getMinutes()).padStart(2, "0");
+    const seconds = String(time.getSeconds()).padStart(2, "0");
+    return `${hours}:${minutes}:${seconds}`;
+  }
+
+  // Get the current time and set it to the "current-time" span
+  const currentTimeElement = document.getElementById("current-time");
+  if (currentTimeElement) {
+    setInterval(function() {
+      const currentTime = new Date();
+      currentTimeElement.textContent = formatTime(currentTime);
+    }, 1000); // Update every second
+  }
+});
+
+</script>
+
+</head>
+
+<body>
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1></h1>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <li class="dropdown">
+          <a class="navbar-brand" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Marwa.Ah</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">991647132</a></li>
+            <li><a href="login.html">Logout</a></li>
+          </ul>
+        </li>
+  
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Books</a></li>
+          <li><a href="#">Deals</a></li>
+          <li><a href="#">Authors</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="search.html"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+          <li><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <!-- Left Profile Section -->
+        <div class="profile-section">
+          <img src="images/profile.jpg" alt="Profile Icon" class="profile-icon rounded-circle">
+          <hr>
+
+     <!-- Updated HTML -->
+<div class="profile-details">
+  <p><strong>Name:</strong> Marwa.Ah</p>
+  <hr>
+  <p><strong>User ID:</strong> 991647132</p>
+  <hr>
+
+  
+
+  <strong>
+    <p><strong>Date:</strong> <span id="current-date"></span></p>
+    <hr>
+
+    <p><strong>Time:</strong> <span id="current-time"></span>
+  </strong><br><hr>
+  <a href="#" id="order-link"><strong>Order & Payment</strong> <span class="arrow">&#9660;</span></a>
+
+</div>
+<!-- Add the options corresponding to each link -->
+
+<div id="order-options" style="display: none;">
+  <ul>
+    <ul>
+      <li><a href="#"><strong>View Order History</strong></a></li>
+      <li><a href="#"><strong>Return Item</strong></a></li>
+      <li><a href="#"><strong>Add Credit Card</strong></a></li>
+      <li><a href="#"><strong>Manage Payment Methods</strong></a></li>
+      <li><a href="#"><strong>View Payment History</strong></a></li>
+    </ul>    
+  </ul>
+</div>
+
+                  <hr>
+
+          <div class="profile-actions">
+            <a href="#" class="btn btn-primary">Edit Profile</a>
+            <a href="index.html" class="btn btn-danger">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-9">
+        <form action="index.html" method="GET" class="input-group" style="margin-top: 20px;">
+          <input type="text" name="query" class="form-control" placeholder="Search for books..." style="border-radius: 15px 0 0 15px;">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-info" style="border-radius: 0 10px 10px 0;">Search</button>
+          </span>
+        </form>
+
+        <br><br>
+        <!-- Main Content Section -->
+        
+          <hr>
+
+          <h2>New Arrivals</h2>
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="book-panel panel panel-default">
+                <div class="panel-body">
+                  <img src="images/book4.jpg" alt="Book 4">
+                </div>
+                <div class="panel-footer">Beyond the Stars</div>
+                <p class="price">$29.99</p>
+
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="book-panel panel panel-default">
+                <div class="panel-body">
+                  <img src="images/book5.jpg" alt="Book 5">
+                </div>
+                <div class="panel-footer">The Last Stand</div>
+                <p class="price">$22.99</p>
+
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="book-panel panel panel-default">
+                <div class="panel-body">
+                  <img src="images/book6.jpg" alt="Book 6">
+                </div>
+                <div class="panel-footer">Through the Ages</div>
+                <p class="price">$17.99</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container-fluid text-center">
+    <div style="display: flex; justify-content: space-between;">
+      <div style="width: 20%;">
+        <h4>Popular Categories</h4>
+        <ul>
+          <li><a href="#">Children's</a></li>
+          <li><a href="#">Teen and Young Adult</a></li>
+          <li><a href="#">Literature & Fiction</a></li>
+          <li><a href="#">Mystery & Thriller</a></li>
+          <li><a href="#">Sci-fi & Fantasy</a></li>
+          <li><a href="#">Rare & Collectible Books</a></li>
+        </ul>
+      </div>
+      <div style="width: 20%;">
+        <h4>Website</h4>
+        <ul>
+          <li><a href="#">Educator Benefits</a></li>
+          <li><a href="#">Librarian Benefits</a></li>
+          <li><a href="#">e-Gift Cards</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">View Mobile Site</a></li>
+        </ul>
+      </div>
+      <div style="width: 20%;">
+        <h4>My Account</h4>
+        <ul>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Shopping Cart</a></li>
+          <li><a href="#">Order History</a></li>
+          <li><a href="#">Wish List</a></li>
+        </ul>
+      </div>
+      <div style="width: 20%;">
+        <h4>Follow Us</h4>
+        <ul>
+          <li><a href="https://www.facebook.com" target="_blank"><img src="images/facebook-logo.png" alt="Facebook Logo"
+                class="social-logo">Facebook</a></li>
+          <li><a href="https://www.twitter.com" target="_blank"><img src="images/twitter-logo.png" alt="Twitter Logo"
+                class="social-logo">Twitter</a></li>
+          <li><a href="https://www.pinterest.com" target="_blank"><img src="images/pinterest-logo.png"
+                alt="Pinterest Logo" class="social-logo">Pinterest</a></li>
+          <li><a href="https://www.tumblr.com" target="_blank"><img src="images/tumblr-logo.png" alt="Tumblr Logo"
+                class="social-logo">Tumblr</a></li>
+          <li><a href="https://www.instagram.com" target="_blank"><img src="images/instagram-logo.png"
+                alt="Instagram Logo" class="social-logo">Instagram</a></li>
+        </ul>
+      </div>
+      <div style="width: 20%;">
+        <h4>Help & Support</h4>
+        <ul>
+          <li><a href="#">Shipping Costs</a></li>
+          <li><a href="#">Billing</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Website Suggestions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="width: 100%; text-align: center; margin-top: 30px;">
+      <p>LitLink Book Store &copy; 2023</p>
+      <form class="form-inline">
+        Get deals:
+        <input type="email" class="form-control" size="50" placeholder="Email Address">
+        <button type="button" class="btn btn-danger">Sign Up</button>
+      </form>
+    </div>
+  </footer>
+</body>
+</html>

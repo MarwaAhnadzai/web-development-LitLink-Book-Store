@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>LitLink Store</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="cart-style.css" />
+
+
+  <style>
+    /* Add your global styles here */
+
+    /* Jumbotron Styles */
+    .jumbotron {
+      background: url('images/logo.jpg') center center;
+      background-size: cover;
+      color: rgb(224, 210, 192);
+      text-shadow: 2px 2px 4px #000;
+      margin-bottom: 0;
+    }
+  </style>
+<script>
+  function addToCart() {
+    // Add your logic here for adding the book to the cart
+    alert("Book added to the cart!");
+  }
+</script>
+
+</head>
+
+<body>
+  <!-- Jumbotron -->
+  <div class="jumbotron">
+    <div class="container text-center">
+      <h1></h1>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <li class="dropdown">
+          <a class="navbar-brand" href="#"  data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">Marwa.Ah </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">991647132</a></li>
+            <li><a href="login.html">Logout</a></li>
+           </ul>
+        </li>
+              </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="search.html">Search</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Deals</a></li>
+          <li><a href="#">Stores</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+          <li class="active"><a href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  </div>
+  </div>
+  
+  <!-- ---------- cart items details------------- -->
+  <div class="small-container cart-page">
+  <table>
+  <tr>
+    <th>Ebook</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+  </tr>
+  <tr>
+    <td>
+      <div class="cart-info">
+        <img src="images/Book 1.jpg" alt="Book 16" />
+        <div>
+          <p>Anna Karenina</p>
+          <small>Price: $49.00</small> <br />
+          <a href="">Remove</a>
+        </div>
+      </div>
+    </td>
+    <td><input type="number" value="1" /></td>
+    <td>$49.00</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="cart-info">
+        <img src="images/Book 5.jpg" alt="Book 5" />
+        <div>
+          <p>Anna Karenina</p>
+          <small>Price: $55.00</small> <br />
+          <a href="">Remove</a>
+        </div>
+      </div>
+    </td>
+    <td><input type="number" value="1" /></td>
+    <td>$55.00</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="cart-info">
+        <img src="images/Book 6.jpg" alt="Book 6" />
+        <div>
+          <p>Anna Karenina</p>
+          <small>Price: $24.00</small> <br />
+          <a href="">Remove</a>
+        </div>
+      </div>
+    </td>
+    <td><input type="number" value="1" /></td>
+    <td>$24.00</td>
+  </tr>
+  </table>
+  <div class="total-price">
+  <table>
+    <tr>
+      <td>Subtotal</td>
+      <td>$ 128.00</td>
+    </tr>
+    <tr>
+      <td>Tax</td>
+      <td>$16.64</td>
+    </tr>
+    <tr>
+      <td>Total</td>
+      <td>$144.64</td>
+    </tr>
+  </table>
+  </div>
+  </div>
+  <style>
+    .small-container {
+  max-width: 1080px;
+  margin: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+  </style>
+  <script>
+    // Example book prices (replace this array with your actual data)
+    var bookPrices = [49.00, 55.00, 24.00];
+  
+    function updateTotal() {
+      var quantityElements = document.querySelectorAll('input[type="number"]');
+      var subtotalElements = document.querySelectorAll('.cart-page table td:last-child');
+  
+      var subtotal = 0;
+  
+      for (var i = 0; i < quantityElements.length; i++) {
+        var quantity = parseInt(quantityElements[i].value) || 0; // Use 0 if parsing fails
+        var price = bookPrices[i] || 0; // Use 0 if the price is not available in the array
+        var itemTotal = quantity * price;
+        subtotal += itemTotal;
+        subtotalElements[i].innerText = '$' + itemTotal.toFixed(2);
+      }
+  
+      var taxRate = 0.13;
+      var tax = subtotal * taxRate;
+      var total = subtotal + tax;
+  
+      document.querySelector('.total-price table tr:first-child td:last-child').innerText = '$' + subtotal.toFixed(2);
+      document.querySelector('.total-price table tr:nth-child(2) td:last-child').innerText = '$' + tax.toFixed(2);
+      document.querySelector('.total-price table tr:last-child td:last-child').innerText = '$' + total.toFixed(2);
+    }
+  
+    // Initial update when the page loads
+    updateTotal();
+  
+    // Attach the updateTotal function to the input elements' change event
+    var quantityInputs = document.querySelectorAll('input[type="number"]');
+    for (var i = 0; i < quantityInputs.length; i++) {
+      quantityInputs[i].addEventListener('input', updateTotal);
+    }
+  </script>
+  
+   <!-- Footer Section -->
+   <footer class="container-fluid text-center">
+    <div style="display: flex; justify-content: space-between;">
+        <div style="width: 20%;">
+            <h4>Popular Categories</h4>
+            <ul>
+              <li><a href="#">Children's</a></li>
+              <li><a href="#">Teen and Young Adult</a></li>
+              <li><a href="#">Literature & Fiction</a></li>
+              <li><a href="#">Mystery & Thriller</a></li>
+              <li><a href="#">Sci-fi & Fantasy</a></li>
+              <li><a href="#">Rare & Collectible Books</a></li>
+          </ul>
+        </div>
+        <div style="width: 20%;">
+            <h4>Website</h4>
+            <ul>
+                <li><a href="#">Educator Benefits</a></li>
+                <li><a href="#">Librarian Benefits</a></li>
+                <li><a href="#">e-Gift Cards</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">View Mobile Site</a></li>
+            </ul>
+        </div>
+        <div style="width: 20%;">
+            <h4>My Account</h4>
+            <ul>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Shopping Cart</a></li>
+                <li><a href="#">Order History</a></li>
+                <li><a href="#">Wish List</a></li>
+            </ul>
+        </div>
+        <div style="width: 20%;">
+            <h4>Follow Us</h4>
+            <ul>
+              <li><a href="https://www.facebook.com" target="_blank"><img src="images/facebook-logo.png" alt="Facebook Logo" class="social-logo">Facebook</a></li>
+              <li><a href="https://www.twitter.com" target="_blank"><img src="images/twitter-logo.png" alt="Twitter Logo" class="social-logo">Twitter</a></li>
+              <li><a href="https://www.pinterest.com" target="_blank"><img src="images/pinterest-logo.png" alt="Pinterest Logo" class="social-logo">Pinterest</a></li>
+              <li><a href="https://www.tumblr.com" target="_blank"><img src="images/tumblr-logo.png" alt="Tumblr Logo" class="social-logo">Tumblr</a></li>
+              <li><a href="https://www.instagram.com" target="_blank"><img src="images/instagram-logo.png" alt="Instagram Logo" class="social-logo">Instagram</a></li>
+          </ul>
+        </div>
+        <div style="width: 20%;">
+            <h4>Help & Support</h4>
+            <ul>
+                <li><a href="#">Shipping Costs</a></li>
+                <li><a href="#">Billing</a></li>
+                <li><a href="#">Return Policy</a></li>
+                <li><a href="#">Website Suggestions</a></li>
+            </ul>
+        </div>
+    </div>
+    <div style="width: 100%; text-align: center; margin-top: 30px;">
+      <p>LitLink Book Store &copy; 2023</p>
+      <form class="form-inline">
+          Get deals:
+          <input type="email" class="form-control" size="50" placeholder="Email Address">
+          <button type="button" class="btn btn-danger">Sign Up</button>
+      </form>
+    </div>
+</nav>
+
+</footer>
+<style>
+ 
+
+  footer {
+      background-color: #333;
+      color: #fff;
+      padding: 30px;
+  }
+
+  footer h4 {
+      color: #ff8c00;
+      margin-bottom: 15px;
+  }
+
+  ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  }
+
+  li {
+      margin-bottom: 10px;
+  }
+
+  a {
+      color: #fff;
+      text-decoration: none;
+  }
+
+  a:hover {
+      text-decoration: underline;
+  }
+
+  form {
+      margin-top: 20px;
+  }
+
+  input {
+      padding: 5px;
+      margin-right: 10px;
+  }
+  .social-logo {
+            width: 20px; /* Adjust the size as needed */
+            height: auto;
+            margin-right: 5px;
+        }
+</style>
+<style>* 
+  
+  /* ---------- cart items details------------- */
+  .cart-page {
+    margin: 80px auto;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .cart-info {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  th {
+    text-align: left;
+    padding: 5px;
+    color: #fff;
+    background: #ff523b;
+    font-weight: normal;
+  }
+  td {
+    padding: 10px 5px;
+  }
+  td input {
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+  }
+  td a {
+    color: #ff523b;
+    font-size: 12px;
+  }
+  td img {
+    width: 80px;
+    height: 110px;
+    margin-right: 10px;
+  }
+  .total-price {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .total-price table {
+    border-top: 3px solid #ff523b;
+    width: 100%;
+    max-width: 400px;
+  }
+  td:last-child {
+    text-align: right;
+  }
+  th:last-child {
+    text-align: right;
+  }
+ 
+  </style>
+
+</body>
+
+</html>
